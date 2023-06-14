@@ -1,15 +1,24 @@
-import { BrowserRouter } from "react-router-dom"
-import { AppRoutes } from "./routes";
-import { lightTheme } from "./shared/themes";
-import { ThemeProvider } from "@mui/material";
+import { BrowserRouter } from 'react-router-dom';
+import { AppRoutes } from './routes';
+import { AppThemeProvider } from './shared/context/ThemeContext';
+import { MenuLateral } from './shared/components';
+import { AppDrawerProvider } from './shared/context';
+
 
 function App() {
   return (
-    <ThemeProvider theme={lightTheme}>
-      <BrowserRouter>
-        <AppRoutes />
-      </BrowserRouter>
-    </ThemeProvider>
+    <AppThemeProvider>
+      <AppDrawerProvider>
+
+        <BrowserRouter>
+          <MenuLateral>
+            <AppRoutes />
+          </MenuLateral>
+        </BrowserRouter>
+
+      </AppDrawerProvider>
+    </AppThemeProvider>
+
   );
 }
 
